@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recommendations for User {{ user_id }}</title>
+  </head>
+  <body>
+    <h1>Recommendations for User {{ user_id }}</h1>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+    <h2>Top Recommended Movies</h2>
+    <table border="1" cellpadding="4">
+      <tr>
+        <th>Movie ID</th>
+        <th>Title</th>
+        <th>Genres</th>
+        <th>Predicted Rating</th>
+      </tr>
+      {% for row in recommendations %}
+        <tr>
+          <td>{{ row.movieId }}</td>
+          <td>{{ row.title }}</td>
+          <td>{{ row.genres }}</td>
+          <td>{{ "%.2f"|format(row.predicted_rating) }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

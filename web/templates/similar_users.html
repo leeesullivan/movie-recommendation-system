@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Similar Users to {{ user_id }}</title>
+  </head>
+  <body>
+    <h1>Users similar to {{ user_id }}</h1>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+    <h2>Top Neighbors</h2>
+    <table border="1" cellpadding="4">
+      <tr>
+        <th>Neighbor User ID</th>
+        <th>Similarity</th>
+        <th>Number of Overlapping Rated Movies</th>
+      </tr>
+      {% for row in neighbors %}
+        <tr>
+          <td>{{ row.neighbor_id }}</td>
+          <td>{{ "%.3f"|format(row.similarity) }}</td>
+          <td>{{ row.overlap }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

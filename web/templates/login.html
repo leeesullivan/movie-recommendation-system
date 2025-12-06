@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Recommender - Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form method="post">
+      <label for="user_id">Select User ID:</label>
+      <select name="user_id" id="user_id">
+        {% for uid in user_ids %}
+          <option value="{{ uid }}">{{ uid }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit">Login</button>
+    </form>
+  </body>
+</html>

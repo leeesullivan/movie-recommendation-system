@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Recommender - Dashboard</title>
+  </head>
+  <body>
+    <h1>User {{ user_id }}'s Ratings</h1>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <a href="{{ url_for('recommendations') }}">View Recommendations</a> |
+    <a href="{{ url_for('similar_users') }}">View Similar Users</a>
+
+    <h2>Movies you have rated</h2>
+    <table border="1" cellpadding="4">
+      <tr>
+        <th>Movie ID</th>
+        <th>Title</th>
+        <th>Genres</th>
+        <th>Rating</th>
+      </tr>
+      {% for row in user_ratings %}
+        <tr>
+          <td>{{ row.movieId }}</td>
+          <td>{{ row.title }}</td>
+          <td>{{ row.genres }}</td>
+          <td>{{ row.rating }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
